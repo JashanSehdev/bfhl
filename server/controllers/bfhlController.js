@@ -88,9 +88,9 @@ const summary = {
 };
 
   return res.json({
-    user_id: "jashansehdev_ddmmyyyy",
-    email_id: "YOUR_COLLEGE_EMAIL",
-    college_roll_number: "YOUR_ROLL_NUMBER",
+    user_id: "jashansehdev_27052005",
+    email_id: "jashan0613.be23@chitkara.edu.in",
+    college_roll_number: "2310990613",
 
     hierarchies,
 
