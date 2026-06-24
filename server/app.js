@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import bfhlRoutes from "./routes/bfhlRoutes.js";
 
@@ -10,15 +12,23 @@ app.use(express.json());
 
 app.use("/bfhl", bfhlRoutes);
 
-const PORT = process.env.PORT || 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "BFHL API Running"
-    });
+app.use(
+  express.static(
+    path.join(__dirname, "../client/dist")
+  )
+);
+
+app.use((req, res) => {
+  res.sendFile(
+    path.join(__dirname, "../client/dist/index.html")
+  );
 });
 
-app.listen(PORT, () => { 
-    console.log(`Server running on port ${PORT}`);
+const PORT = 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
 });
